@@ -1,5 +1,5 @@
-require "cap_bridge/version"
+#acting as environment
 
-module CapBridge
-  # Your code goes here...
-end
+require_relative "cap_bridge/version"
+
+require_relative './cap_bridge/cli'
