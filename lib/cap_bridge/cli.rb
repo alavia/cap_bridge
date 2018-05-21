@@ -18,7 +18,7 @@ class CapBridge::CLI
     def options
         input = nil
         while input != "exit"
-            puts "Enter the number of the attraction you'd like to learn more about or type exit to exit:"
+            puts "Enter the number of the attraction you'd like to learn more about or type list to see the list again or type exit:"
             input = gets.strip.downcase
             case input
             when "1"
@@ -27,6 +27,10 @@ class CapBridge::CLI
                 puts "More info on attraction 2..."
             when "3"
                 puts "More info on attraction 3..."
+            when "list"
+                list_attractions
+            else
+                puts "Hmm, not sure what you mean. Try typing list or exit."
             end
         end
     end
