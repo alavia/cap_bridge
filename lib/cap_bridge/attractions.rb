@@ -1,12 +1,13 @@
 class CapBridge::Attractions
+    attr_accessor :name, :description, :url
 
     def self.all
         #should return all attractions
-        puts <<-DOC.gsub /^\s*/,''
-            1. Suspension Bridge
-            2. Cliffwalk
-            3. Treetops Adventure
-        DOC
+        # puts <<-DOC.gsub /^\s*/,''
+        #     1. Suspension Bridge
+        #     2. Cliffwalk
+        #     3. Treetops Adventure
+        # DOC
 
         attraction_1 = self.new
         attraction_1.name = "Suspension Bridge"
@@ -17,6 +18,8 @@ class CapBridge::Attractions
         attraction_2.name = "Cliffwalk"
         attraction_2.description = "This is the newest of the activities at Vancouver’s Capilano Suspension Bridge Park. Opened on June 3, 2011, this heart-stopping cliffside journey takes you through rainforest vegetation on a series of unobtrusive cantilevered and suspended walkways jutting out from the granite cliff face above Capilano River to previously unexplored areas of the park. Not for the faint of heart, it is high and narrow and, in some sections, glass (very strong glass) is all that separates guests from the canyon far below.  You don’t want to miss out on one of the most awe-inspiring Vancouver activities around.  Come visit us today!"
         attraction_2.url = "https://www.capbridge.com/explore/cliffwalk/"
+
+        [attraction_1, attraction_2]
     end
 
 end

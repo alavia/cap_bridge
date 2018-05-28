@@ -2,4 +2,7 @@
 
 require './lib/cap_bridge'
 
+# require "bundler/setup"
+# require "cap_bridge"
+
 CapBridge::CLI.new.call

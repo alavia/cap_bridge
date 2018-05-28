@@ -2,7 +2,7 @@ class CapBridge::CLI
 
     def call
         list_attractions
-        options
+        menu
         goodbye
     end
 
@@ -11,19 +11,15 @@ class CapBridge::CLI
         @attractions = CapBridge::Attractions.all
     end
 
-    def options
+    def menu
         input = nil
         while input != "exit"
             puts "Enter the number of the attraction you'd like to learn more about or type list to see the list again or type exit:"
             input = gets.strip.downcase
-            case input
-            when "1"
-                puts "More info on attraction 1..."
-            when "2"
-                puts "More info on attraction 2..."
-            when "3"
-                puts "More info on attraction 3..."
-            when "list"
+
+            if input.to_i > 0
+                puts @attractions[input.to_i-1]
+            elsif input == "list"
                 list_attractions
             else
                 puts "Hmm, not sure what you mean. Try typing list or exit."
