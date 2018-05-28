@@ -8,11 +8,7 @@ class CapBridge::CLI
 
     def list_attractions
         puts "Attractions at Capilano Suspension Bridge Park"
-        puts <<-DOC.gsub /^\s*/,''
-            1. Suspension Bridge
-            2. Cliffwalk
-            3. Treetops Adventure
-        DOC
+        @attractions = CapBridge::Attractions.all
     end
 
     def options
