@@ -10,7 +10,7 @@ class CapBridge::CLI
         puts "Attractions at Capilano Suspension Bridge Park"
         @attractions = CapBridge::Attractions.current
         @attractions.each.with_index(1) do |attraction, i|
-            puts "#{i}. #{attractions.name}"
+            puts "#{i}. #{attraction.name}"
         end
     end
 
@@ -21,7 +21,8 @@ class CapBridge::CLI
             input = gets.strip.downcase
 
             if input.to_i > 0
-                puts @attractions[input.to_i-1]
+                the_attraction = @attractions[input.to_i-1]
+                puts "#{the_attraction.name} - #{the_attraction.description}"
             elsif input == "list"
                 list_attractions
             else
