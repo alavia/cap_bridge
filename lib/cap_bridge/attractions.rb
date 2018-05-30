@@ -1,14 +1,15 @@
 class CapBridge::Attractions
     attr_accessor :name, :description, :url
 
-    def self.all
-        #should return all attractions
-        # puts <<-DOC.gsub /^\s*/,''
-        #     1. Suspension Bridge
-        #     2. Cliffwalk
-        #     3. Treetops Adventure
-        # DOC
+    def self.current
+        # scrape site and return data
+        self.scraper
+    end
 
+    def self.scraper
+        attractions = []
+
+        attractions << self.scrape
         attraction_1 = self.new
         attraction_1.name = "Suspension Bridge"
         attraction_1.description = "Originally built in 1889, Capilano Suspension Bridge stretches 450 feet (137m) across and 230 feet (70m) above Capilano River. Since then much has been added to the twenty-seven acre park. CLIFFWALK is the park’s newest attraction – a cantilevered walkway clinging to the granite cliff high above Capilano Canyon. Treetops Adventure, seven suspension bridges through the evergreens taking you up to 100 feet (30m) above the forest floor, offers a unique squirrel’s eye perspective of the forest. Guided nature tours, the Kids’ Rainforest Explorer program and the Living Forest exhibit enhance this unique rainforest encounter. Enjoy seasonal musical entertainment and First Nations culture. Take photos at the Totem Park and with the Capilano Tramps. Top it off with a visit to the gift shop full of quality merchandise from all over Canada and great homemade fudge! It’s all in a day’s fun at Capilano Suspension Bridge Park."
