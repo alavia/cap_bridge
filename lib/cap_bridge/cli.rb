@@ -9,7 +9,7 @@ class CapBridge::CLI
     def list_attractions
         puts "Attractions at Capilano Suspension Bridge Park"
         @attractions = CapBridge::Attractions.current
-        @attractions.each.with_index(1) do |deal, i|
+        @attractions.each.with_index(1) do |attraction, i|
             puts "#{i}. #{attractions.name}"
         end
     end
