@@ -17,6 +17,8 @@ class CapBridge::Attractions
         attractions << self.scrape_raptors
         attractions << self.scrape_tours
         attractions << self.scrape_forest
+        attractions << self.scrape_kids
+        attractions << self.scrape_lights
 
         attractions
     end
@@ -99,7 +101,26 @@ class CapBridge::Attractions
         forest_doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/living-forest/"))
         attraction.description = forest_doc.css("p").children[0].text
         attraction
-        binding.pry
+    end
+
+    def self.scrape_kids
+        doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
+
+        attraction = self.new
+        attraction.name = doc.css("#menu-item-423").text.upcase
+        kids_doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/capilano-kids/"))
+        attraction.description = kids_doc.css("p").children[0..9].text
+        attraction
+    end
+
+    def self.scrape_lights
+        doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
+
+        attraction = self.new
+        attraction.name = doc.css("#menu-item-422").text.upcase
+        lights_doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/canyon-lights/"))
+        attraction.description = lights_doc.css("p").children[1..3].text
+        attraction
     end
 
 end
