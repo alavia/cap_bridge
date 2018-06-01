@@ -20,7 +20,7 @@ class CapBridge::CLI
             puts "Enter the number of the attraction you'd like to learn more about or type list to see the list again or type exit:"
             input = gets.strip.downcase
 
-            if input.to_i > 0
+            if input.to_i.between?(1,10)
                 the_attraction = @attractions[input.to_i-1]
                 puts "#{the_attraction.name} - #{the_attraction.description}"
             elsif input == "list"
