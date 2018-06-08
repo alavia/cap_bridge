@@ -3,11 +3,13 @@ class CapBridge::CLI
     def call
         list_attractions
         menu
-        goodbye
+        # goodbye
     end
 
     def list_attractions
-        puts "Attractions at Capilano Suspension Bridge Park"
+        puts "Welcome, Adventurer!"
+        puts "If you're planning on visiting one of Vancouver's most beloved destinations, you've come to the right place!"
+        puts "Check out the attractions at Capilano Suspension Bridge Park:"
         @attractions = CapBridge::Attractions.current
         @attractions.each.with_index(1) do |attraction, i|
             puts "#{i}. #{attraction.name}"
@@ -23,8 +25,10 @@ class CapBridge::CLI
             if input.to_i.between?(1,10)
                 the_attraction = @attractions[input.to_i-1]
                 puts "#{the_attraction.name} - #{the_attraction.description}"
-            elsif input == "list"
+            elsif input == "list".downcase
                 list_attractions
+            elsif input == "exit".downcase
+                goodbye
             else
                 puts "Hmm, not sure what you mean. Try typing list or exit."
             end
@@ -32,6 +36,7 @@ class CapBridge::CLI
     end
 
     def goodbye
+        puts "Enjoy your stay in Vancouver!"
         puts "See you next time!"
     end
 end
