@@ -1,15 +1,19 @@
 class CapBridge::CLI
 
     def call
+        welcome
         list_attractions
         menu
         # goodbye
     end
 
-    def list_attractions
+    def welcome
         puts "Welcome, Adventurer!"
         puts "If you're planning on visiting one of Vancouver's most beloved destinations, you've come to the right place!"
         puts "Check out the attractions at Capilano Suspension Bridge Park:"
+    end
+    def list_attractions
+        
         @attractions = CapBridge::Attractions.current
         @attractions.each.with_index(1) do |attraction, i|
             puts "#{i}. #{attraction.name}"

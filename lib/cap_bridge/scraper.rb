@@ -74,15 +74,17 @@ class CapBridge::Scraper
         doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
         list_att = doc.css(".col-has-text")
 
-        list_att.each do |item|
-            attraction = self.new
-            attraction.name = item.css(".inner-text-title").text.strip
-            attraction.description = item.css(".inner-text-hover-content").text
+        list_att.collect do |attraction|
+            new_attraction = self.new
+            new_attraction.name = attraction.css(".inner-text-title").text.strip
+            new_attraction.url = "https://www.capbridge.com/explore/#{attraction.attribute("href").value}/"
+binding.pry
         end
         attractions << attraction
     end
 
-    def self.
+    def description(url)
+
 
     def self.scrape_raptors
         doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
