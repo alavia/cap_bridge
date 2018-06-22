@@ -1,12 +1,6 @@
-class CapBridge::Attractions
-    attr_accessor :name, :description, :url
+class CapBridge::Scraper
 
-    def self.current
-        # scrape site and return data
-        self.scrape_attractions
-    end
-
-    # def self.scraper
+# def self.scraper
     #     something()
 
     #     attractions = []
@@ -87,6 +81,8 @@ class CapBridge::Attractions
         end
         attractions << attraction
     end
+
+    def self.
 
     def self.scrape_raptors
         doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
