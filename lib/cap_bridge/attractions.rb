@@ -1,10 +1,27 @@
 class CapBridge::Attractions
     attr_accessor :name, :description, :url
+    @@all = []
+    @@attractions = []
 
-    def self.current
-        # scrape site and return data
-        self.scrape_attractions
+    def self.all
+        @@all
     end
+
+    def self.clear_all
+        @@all.clear
+    end
+
+    def save
+        @@attractions << self
+    end
+
+    def self.attractions
+        @@attractions
+    end
+    # def self.current
+    #     # scrape site and return data
+    #     self.scrape_attractions
+    # end
 
     # def self.scraper
     #     something()
@@ -75,28 +92,30 @@ class CapBridge::Attractions
     #     attraction
     # end
 
-    def self.scrape_attractions
-        attractions = []
-        doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
-        list_att = doc.css(".col-has-text")
+    # def self.scrape_attractions
+    #     attractions = []
+    #     doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
+    #     list_att = doc.css(".col-has-text")
 
-        list_att.each do |item|
-            attraction = self.new
-            attraction.name = item.css(".inner-text-title").text.strip
-            attraction.description = item.css(".inner-text-hover-content").text
-        end
-        attractions << attraction
-    end
+    #     list_att.each do |item|
+    #         attraction = self.new
+    #         attraction.name = item.css(".inner-text-title").text.strip
+    #         attraction.description = item.css(".inner-text-hover-content").text
+    #     end
+    #     attractions << attraction
+    # end
 
-    def self.scrape_raptors
-        doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
+    # def self.
 
-        attraction = self.new
-        attraction.name = doc.css(".inner-text-hover-content h3").children[7].text
-        raptors_doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
-        attraction.description = raptors_doc.css(".inner-text-hover p").children[16].text.strip
-        attraction
-    end
+    # def self.scrape_raptors
+    #     doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
+
+    #     attraction = self.new
+    #     attraction.name = doc.css(".inner-text-hover-content h3").children[7].text
+    #     raptors_doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
+    #     attraction.description = raptors_doc.css(".inner-text-hover p").children[16].text.strip
+    #     attraction
+    # end
 
     # def self.scrape_tours
     #     doc = Nokogiri::HTML(open("https://www.capbridge.com/explore/"))
@@ -137,5 +156,4 @@ class CapBridge::Attractions
     #     attraction.description = lights_doc.css("p").children[1..3].text
     #     attraction
     # end
-
 end
